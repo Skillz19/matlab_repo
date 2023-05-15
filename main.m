@@ -8,6 +8,7 @@ classdef main
         batch_size = 32;
         val_patience = 25;
         result_txt = 'results.txt';
+        display = false;
     end
     methods
         function run(self)
@@ -59,7 +60,6 @@ classdef main
             % Test model performance
             result = self.evaluate(test_data, test_labels, trained_net);
 
-            
             % save model performance 
             self.save_result(result);
         end
@@ -91,13 +91,22 @@ classdef main
             precision = zeros(numClasses, 1);
             recall = zeros(numClasses, 1);
             for k = 1:numClasses
-                precision(k) = confMat(k,k) / sum(confMat(:,k));
-                recall(k) = confMat(k,k) / sum(confMat(k,:));
+                precision(k) = confMat(k,k) / sum(confMat(k,:));
+                recall(k) = confMat(k,k) / sum(confMat(:,k));
+                
             end
             F1 = 2 * (precision .* recall) ./ (precision + recall);
             result = ['Accuracy: ', num2str(mean(accuracy)), ' F1 score: ', ...
                 num2str(mean(F1)), ' Recall: ', num2str(mean(recall)), ...
                 ' Precision ', num2str(mean(precision))];
+            % disp results
+            if self.display
+                disp(F1)
+                disp(recall)
+                disp(precision)
+                disp(confMat)
+                disp(result)
+            end
         end
         
         % save formatted string for result
