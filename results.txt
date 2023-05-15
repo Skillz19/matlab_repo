@@ -1,0 +1,4 @@
+Test results for RESNET50: Accuracy: 0.86378 F1 score: 0.84082 Recall: 0.82009 Precision 0.90535 
+Test results for DENSENET: Accuracy: 0.84455 F1 score: 0.81454 Recall: 0.79359 Precision 0.89743 
+Test results for DENSENET: Accuracy: 0.84135 F1 score: 0.81013 Recall: 0.78932 Precision 0.89573 
+Test results for EFFICIENTNET: Accuracy: 0.83974 F1 score: 0.8091 Recall: 0.78889 Precision 0.88908 
